@@ -80,12 +80,14 @@
             score += 1;
             document.getElementById("score").innerHTML = "score is" + score;
         }
-        else {
+         else {
             document.getElementById(ids[position]).setAttribute('src','empty.jpg');
             chestCount += 1;
             document.getElementById("chests").innerHTML = "chestCount" + chestCount;
         }
+        
         position = lastCheck;
+        help(position);
     
     }
     
