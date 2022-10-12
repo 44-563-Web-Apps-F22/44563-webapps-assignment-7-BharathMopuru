@@ -42,7 +42,7 @@
 <div class="row">
     <div class="col-md-2"><img id="10" onclick="check(10)" src="treasure_chests.jpg" rel="treasure_chest" width="150" height="150"></div>
     <div class="col-md-2"><img id="11" onclick="check(11)" src="treasure_chests.jpg" rel="treasure_chest" width="150" height="150"></div>
-    <div class="col-md-2"><img id="12" onclick="help(12)" src="help.jpg" rel="help" width="150" height="150"></div>
+    <div class="col-md-2"><img id="12" onclick="help()" src="help.jpg" rel="help" width="150" height="150"></div>
     <div class="col-md-2"><img id="13" onclick="check(13)" src="treasure_chests.jpg" rel="treasure_chest" width="150" height="150"></div>
     <div class="col-md-2"><img id="14" onclick="check(14)" src="treasure_chests.jpg" rel="treasure_chest" width="150" height="150"></div>
 </div>
@@ -73,27 +73,28 @@
         { 
             ids[i] = ""+i;
         }
-        ans = help(position);
-        document.getElementById("help").innerHTML = ans; 
+       
         if(position == treasureLocation){
             document.getElementById(ids[position]).setAttribute('src','treasure.jpg');
             score += 1;
-            document.getElementById("score").innerHTML = "score is" + score;
+            chestCount += 1;
         }
          else {
             document.getElementById(ids[position]).setAttribute('src','empty.jpg');
             chestCount += 1;
-            document.getElementById("chests").innerHTML = "chestCount" + chestCount;
         }
-        
-        position = lastCheck;
-        help(position);
+        document.getElementById("score").innerHTML = "score is" + score;
+        document.getElementById("chests").innerHTML = "chestCount" + chestCount;
+        lastCheck = position ;
+        help();
+        //ans = help();
+        //document.getElementById("help").innerHTML = ans; 
     
     }
     
-    function help(last){
-        row1 = Math.ceil((last+1)/5);
-        col1 = (last % 5) + 1;
+    function help(){
+        row1 = Math.ceil((lastCheck+1)/5);
+        col1 = (lastCheck % 5) + 1;
         row2 = Math.ceil((treasureLocation+1)/5);
         col2 = (treasureLocation % 5) + 1;
         row = (row1 - row2);
@@ -103,24 +104,31 @@
         if(row1 == row2)
             {
                 if(col<0)
-                   return "right";
+                document.getElementById("help").innerHTML = "right"
+                   //return "right";
                 else if (col>0)
-                    return "left";
+                document.getElementById("help").innerHTML = "left"
+                   // return "left";
                 else
-                    return "Sorry, no help available";    
+                document.getElementById("help").innerHTML = "Sorry, no help available"
+                    //return "Sorry, no help available";    
             }
         if(col1 == col2)
         {
             if(row<0)
-            return "down";
+            document.getElementById("help").innerHTML = "down"
+            //return "down";
             else if(row>0)
-            return "up";
+            document.getElementById("help").innerHTML = "up"
+           // return "up";
             else
-            return "Sorry, no help available";        
+            document.getElementById("help").innerHTML = "Sorry, no help available"
+            //return "Sorry, no help available";        
 
         }    
-        if(row1!=row2 || col1!=col2)
-            return "Sorry, no help available";
+        if(row1 != row2 && col1 != col2)
+            document.getElementById("help").innerHTML = "Sorry, no help available"
+           // return "Sorry, no help available";
     }
 </script>
 
