@@ -39,6 +39,7 @@
 		<input type="text" name="div" id="div">
 	<button onclick="get()">Get</button>
 	<button onclick="spin()">Spin</button>
+	<button onclick="swap()">swap</button>
 </body>
 <script>
 	function makeNewDiv(){
@@ -69,5 +70,28 @@
 			}
 			
 		}
+	function swap(){
+	
+		var cyclerItems = document.getElementsByClassName("cycler");
+		if(cyclerItems.length>1){
+			container = document.getElementById("target");
+			i = Math.floor(Math.random()*(cyclerItems.length));
+			console.log(i);
+			j = Math.floor(Math.random()*(cyclerItems.length));
+			while(i==j){
+				j = Math.floor(Math.random()*(cyclerItems.length));
+			}
+			console.log(j);
+			temp= cyclerItems[i].innerHTML;
+			console.log(temp);
+			temp1 = cyclerItems[j].innerHTML;
+			console.log(temp1);
+			cyclerItems[i].innerHTML = temp1;
+			console.log(cyclerItems[i]);
+			cyclerItems[j].innerHTML = temp;
+			console.log(cyclerItems[j])
+			
+				}
+	}
 </script>
 </html>	

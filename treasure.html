@@ -22,6 +22,7 @@
     <P id="chests" class="col-md-3" style="background-color:green ;color: black;">Number of chests checked is zero</P>
     <P id="score" class="col-md-3" style="background-color:orange;color: black;">Score is unknown</P>
     <P id="help" class="col-md-3" style="background-color:red;color: black;">Help report</P>
+    <button onclick="reset()">reset</button>
     </div>
 </div>
 <div class="container">
@@ -63,12 +64,13 @@
 </div>
 <script>
 
+     var ids = [];
     chestCount = 0;
     score = 0;
     lastCheck = 12;
-    treasureLocation = 18;
+    treasureLocation = Math.floor(Math.random()*25);
     function check(position) {
-        var ids = [];
+       
         for(i=0;i<25;i++) 
         { 
             ids[i] = ""+i;
@@ -130,6 +132,17 @@
             document.getElementById("help").innerHTML = "Sorry, no help available"
            // return "Sorry, no help available";
     }
+    function reset(){
+        for(i=0;i<24;i++){
+            if(ids[i]!=treasureLocation && ids[i]!=12){
+                document.getElementById(ids[i]).setAttribute("src","treasure_chests.jpg")
+                score = 0;
+                chestCount = 0;
+                document.getElementById("score").innerHTML = "score is " + score;
+                document.getElementById("chests").innerHTML = "chestCount" + chestCount;
+                treasureLocation=Math.floor(Math.random()*25)
+            }
+    }}
 </script>
 
 </body>

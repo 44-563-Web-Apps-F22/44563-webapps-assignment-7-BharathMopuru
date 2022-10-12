@@ -40,14 +40,15 @@
   <button onclick="recordReact()">React Now</button>
   <script>
     var myTime = undefined;
+    var random = (Math.floor(Math.random()*11)+2)
     function recordReact(){
       myTime = undefined;
       myTime = Date.now();
       console.log(myTime);
     }
     function startTime(){
-      for (let i = 0; i <4;i++) {
-        setTimeout(()=>{document.getElementById("countdown").innerHTML=i},(3-i)*1000);
+      for (let i = 0; i < random;i++) {
+        setTimeout(()=>{document.getElementById("countdown").innerHTML=i},(random-i)*1000);
     
         } 
       
@@ -58,7 +59,7 @@
         var buttonTime = Date.now();
         document.getElementById("target").innerHTML = "Time was " + (myTime - buttonTime);
       }
-    },3000);
+    },random*1000);
   }
   </script>
 </body>
