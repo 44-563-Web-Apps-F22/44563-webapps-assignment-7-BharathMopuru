@@ -68,7 +68,7 @@
     chestCount = 0;
     score = 0;
     lastCheck = 12;
-    treasureLocation = 18;
+    treasureLocation = Math.floor(Math.random()*25);
     function check(position) {
        
         for(i=0;i<25;i++) 
@@ -79,16 +79,18 @@
         if(position == treasureLocation){
             document.getElementById(ids[position]).setAttribute('src','treasure.jpg');
             score += 1;
-            chestCount ++;
+            chestCount++;
+            document.getElementById("chests").innerHTML = "chestCount " + chestCount;
         }
          else if(position != treasureLocation){
             document.getElementById(ids[position]).setAttribute('src','empty.jpg');
-            chestCount ++;
+            chestCount++;
+            document.getElementById("chests").innerHTML = "chestCount " + chestCount;
         }
         else{
         help();}
         document.getElementById("score").innerHTML = "score is " + score;
-        document.getElementById("chests").innerHTML = "chestCount " + chestCount;
+        
         lastCheck = position ;
         
         //ans = help();
@@ -104,7 +106,8 @@
         row = (row1 - row2);
         col = (col1 - col2);
         score+=2;
-        document.getElementById("chests").innerHTML = "chestCount "+ chestCount++;
+        chestCount++;
+        document.getElementById("chests").innerHTML = "chestCount "+ chestCount;
         document.getElementById("score").innerHTML = "score is "+ score;
         if(row1 == row2)
             {
